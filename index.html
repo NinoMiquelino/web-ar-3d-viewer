@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projeto AR - model-viewer (Exemplo funcional)</title>
+  <meta name="description" content="Projeto exemplo de Realidade Aumentada web usando model-viewer para WebXR / Scene Viewer / Quick Look." />
+  <!-- model-viewer correto -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>Projeto AR (Web) — Exemplo funcional com &lt;model-viewer&gt;</h1>
+    <p class="muted">Teste rápido de AR (WebXR / Scene Viewer / Quick Look). Use este projeto como base: substitua <code>.glb</code> pelos seus modelos e hospede via HTTPS.</p>
+
+    <div class="viewer" id="viewerWrap">
+    
+   <div id="loading" class="loading">
+   <div class="spinner"></div>
+  <div class="loading-text">Carregando 0%</div>
+  <div class="loading-bar">
+    <div class="loading-progress"></div>
+  </div>
+</div> 
+    
+      <model-viewer id="mv"
+        src="RobotExpressive.glb"
+        alt="Robô 3D"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        environment-image="neutral"
+        shadow-intensity="0.5"
+        exposure="1"
+        auto-rotate
+        poster="carregando.jpg"
+        style="background:transparent">
+      </model-viewer>
+    </div>
+
+    <div class="controls">
+      <div class="row">
+        <label class="muted">Modelo:</label>
+        <select id="modelSelect" class="small">
+          <option value="RobotExpressive.glb">Robô (padrão)</option>
+          <option value="Astronaut.glb">Astronauta</option>
+          <option value="DamagedHelmet.glb">Capacete</option>
+        </select>
+      </div>
+
+      <button id="placeBtn" class="small">Abrir AR (ou Modo de Visualização)</button>
+      <button id="rotateBtn" class="small">⟳ Pausar Rotação</button>
+      <button id="scaleUp" class="small">Aumentar</button>
+      <button id="scaleDown" class="small">Diminuir</button>
+      <button id="screenshot" class="small">📷 Capturar tela</button>
+      <button id="downloadGLB" class="small">⬇️ Baixar GLB</button>
+      
+      <button id="bgToggle" class="small">Fundo: Escuro</button>
+      <button id="fullscreenBtn" class="small">⛶ Fullscreen</button>
+      
+      <button id="toggleEnv" class="btn">Controle de iluminação (HDRI)</button>
+      
+    </div>
+
+    <div class="note">
+      <strong>Observações rápidas:</strong>
+      <ul>
+        <li>O projeto precisa ser servido por <strong>HTTPS</strong>.</li>
+        <li>No iOS, Quick Look exige arquivos <code>.usdz</code>.</li>
+        <li>No Android, WebXR ou Scene Viewer são usados automaticamente.</li>
+      </ul>
+    </div>
+
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
